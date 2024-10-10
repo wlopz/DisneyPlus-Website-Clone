@@ -4,6 +4,8 @@
   "private": true,
   "dependencies": {
     "@reduxjs/toolkit": "^2.2.8",
+    "@sentry/cli": "^2.37.0",
+    "@sentry/react": "^8.34.0",
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
@@ -21,9 +23,10 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "react-scripts build && npm run sentry:sourcemaps",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "sentry:sourcemaps": "sentry-cli sourcemaps inject --org test-fes --project disney-clone ./build && sentry-cli sourcemaps upload --org test-fes --project disney-clone ./build"
   },
   "eslintConfig": {
     "extends": [
