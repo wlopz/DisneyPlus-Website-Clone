@@ -16,30 +16,46 @@ const Home = () => {
   const dispatch = useDispatch()
   const userName = useSelector(selectUserName)
   let recommends = []
-  let newDisney = []
+  let newDisneys = []
   let originals = []
-  let trending = []
+  let trendings = []
 
   useEffect(() => {
-    db.collection('movies').onSnapshot((snapshot) => {
+    // console.log("Test");
+    db.collection("movies").onSnapshot((snapshot) => {
       snapshot.docs.map((doc) => {
-        switch(doc.data().type) {
-          case 'recommend':
-            recommends.push({id: doc.id, ...doc.data()})
-            break
-          case 'new':
-            newDisney.push({id: doc.id, ...doc.data()})
-            break
-          case 'original':
-            originals.push({id: doc.id, ...doc.data()})
-            break
-          case 'trending':
-            trending.push({id: doc.id, ...doc.data()})
-            break
+        // CONSOLE LOG HELPS IDENTIFY IF THE MOVIES ARE PASSING
+        // console.log(recommends);
+        switch (doc.data().type) {
+          case "recommend":
+            recommends = [...recommends, { id: doc.id, ...doc.data() }];
+            break;
+
+          case "new":
+            newDisneys = [...newDisneys, { id: doc.id, ...doc.data() }];
+            break;
+
+          case "original":
+            originals = [...originals, { id: doc.id, ...doc.data() }];
+            break;
+
+          case "trending":
+            trendings = [...trendings, { id: doc.id, ...doc.data() }];
+            break;
         }
-      })
-    })
-  })
+      });
+
+      dispatch(
+        setMovies({
+          recommend: recommends,
+          newDisney: newDisneys,
+          original: originals,
+          trending: trendings,
+        })
+      );
+    });
+  }, [userName]);
+  
 
   return (
     <Container>
