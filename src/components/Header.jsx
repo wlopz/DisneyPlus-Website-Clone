@@ -42,7 +42,7 @@ const Header = () => {
       auth.signOut().then(() => {
         dispatch(setSignOutState())
           history('/')
-      })
+      }).catch((err) => alert(err.message))
     }
   }
   
