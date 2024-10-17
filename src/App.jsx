@@ -4,10 +4,14 @@ import Login from './pages/Login'
 import Header from './components/Header';
 import Home from './pages/Home'
 import Detail from './components/Detail';
+import { Helmet } from 'react-helmet';
 
 function App() {
   return (
     <Router>
+      <Helmet>
+        <title>Disney+</title>
+      </Helmet>
       <div className='App'>
         <Header />
         <Routes>
