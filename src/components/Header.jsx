@@ -75,26 +75,6 @@ const Header = () => {
               <img src="/assets/images/home-icon.svg" alt="HOME" />
               <span>HOME</span>
             </a>
-            <a onClick={handleClick}>
-              <img src="/assets/images/search-icon.svg" alt="SEARCH" />
-              <span>SEARCH</span>
-            </a>
-            <a onClick={handleClick}>
-              <img src="/assets/images/watchlist-icon.svg" alt="WATCHLIST" />
-              <span>WATCHLIST</span>
-            </a>
-            <a href="#originals">
-              <img src="/assets/images/original-icon.svg" alt="ORIGINALS" />
-              <span>ORIGINALS</span>
-            </a>
-            <a onClick={handleClick}>
-              <img src="/assets/images/movie-icon.svg" alt="MOVIES" />
-              <span>MOVIES</span>
-            </a>
-            <a onClick={handleClick}>
-              <img src="/assets/images/series-icon.svg" alt="SERIES" />
-              <span>SERIES</span>
-            </a>
           </NavMenu>
           <SignOut>
             <UserImg src={userPhoto} alt={userName} />
